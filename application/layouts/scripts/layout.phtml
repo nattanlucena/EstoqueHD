@@ -1,0 +1,35 @@
+<?php echo $this->doctype();?>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<title>DCBR</title>
+		<?php echo $this->headLink()->appendStylesheet($this->publicUrl.'/css/bootstrap.css');?>
+		<?php echo $this->headLink()->appendStylesheet($this->publicUrl.'/css/estilo.css');?>
+	</head>
+<body>
+	<div id="topo">
+			<div class="navbar navbar-default navbar-fixed-top">
+				<div class="container">
+					<div class="navbar-header">						
+						<img src="<?php echo $this->publicUrl;?>/img/logo.png" border="0" width="200px;" height="50px;">						
+					</div><!-- .navbar-header -->
+					<div class="collapse navbar-collapse pull-right">
+						<ul class="nav navbar-nav">
+							<li><a href="index.php">Produtos</a></li>
+							<li><a href="reseller.php">Entrada</a></li>
+							<li  class="active"><a href="#">Saída</a></li>
+							
+						</ul>
+					</div><!-- .navbar-collapse -->
+				</div><!-- .container -->
+			</div><!-- .navbar -->
+		</div>
+		<!-- #topo -->
+	<div id="all">
+		<div class="container" id="container">
+			<?php echo $this->layout()->content; ?>
+		</div> <!-- .container -->
+		
+	</div><!-- #all -->
+</body>
+</html>
