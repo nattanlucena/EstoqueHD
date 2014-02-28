@@ -5,7 +5,7 @@ class LoginController extends Zend_Controller_Action
 
     public function init()
     {
-        //layout para o loing
+        //layout para o login
     	$layout = $this->_helper->layout();
     	$layout->setLayout("login_layout");
     	
@@ -16,13 +16,13 @@ class LoginController extends Zend_Controller_Action
        	
     }
 
-	public function loginAction(){
-			
-		if( isPost( $this->getParam("logar") ) ){
+	public function logarAction(){
+					
+		if( isset( $this->getParam("logar") ) && isPost( $this->getParam("logar") ) ){
 			
 			if( (!empty($this->getParam("login"))) &&  (!empty($this->getParam("senha"))) ){
 				//senha: Fiu6+{bFxf
-				if( md5($this->getParam("senha")) == "8b4ae0b09fab9707c0ba158dce499c9c"){
+				if( $this->getParam("login") == "admin" &&  md5($this->getParam("senha")) == "8b4ae0b09fab9707c0ba158dce499c9c"){
 					
 					$this->_helper->flashMessenger->addMessage(array("success" => "Olá, seja bem vindo!"));
 					$this->_helper->redirector('index', 'index');
