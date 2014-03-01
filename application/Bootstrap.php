@@ -15,5 +15,21 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		Zend_Session::start();
 		
 	}
+	
+	protected function _initViewHelpers(){
+		
+		// Registrar Camada de Visualização
+		$this->registerPluginResource('view');
+		// Inicialização da Camada
+		$view = $this->bootstrap('view')->getResource('view');
+		
+	}
+	
+	protected function _initErrorDisplay(){
+		$frontController = Zend_Controller_Front::getInstance();
+		$frontController->throwExceptions(true);
+	}
+	
+	
 }
 

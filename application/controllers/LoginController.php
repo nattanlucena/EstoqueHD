@@ -6,55 +6,64 @@ class LoginController extends Zend_Controller_Action
     public function init()
     {
         //layout para o login
-    	$layout = $this->_helper->layout();
-    	$layout->setLayout("login_layout");
+    	//$this->_flashMessenger = $this->_helper->getHelper('FlashMessenger');
     	
+    	if ($this->_helper->FlashMessenger->hasMessages()) {
+    		$this->view->messages = $this->_helper->flashMessenger->getMessages();
+    	}
+    	//$this->initView();
     }
 
     public function indexAction()
     {
-       	
+    
     }
 
 	public function logarAction(){
 					
-		if( isset( $this->getParam("logar") ) && isPost( $this->getParam("logar") ) ){
+		$this->view->messages = $this->_helper->flashMessenger->getMessages();
+		
+		if( $this->_request->isPost() ){
 			
-			if( (!empty($this->getParam("login"))) &&  (!empty($this->getParam("senha"))) ){
+			if( ( $this->getParam("login") != "" ) &&  ( $this->getParam("senha")) != "" ){
 				//senha: Fiu6+{bFxf
 				if( $this->getParam("login") == "admin" &&  md5($this->getParam("senha")) == "8b4ae0b09fab9707c0ba158dce499c9c"){
 					
+					$session_login = new Zend_Session_Namespace("session_login");
+					$session_login->id = "8b4ae0b09fab9707c0ba158dce499c9c";
+					$session_login->flag = true;
 					$this->_helper->flashMessenger->addMessage(array("success" => "Olá, seja bem vindo!"));
 					$this->_helper->redirector('index', 'index');
 					
-					return;
 				}else{
 					//senha incorreta
 					$this->_helper->flashMessenger->addMessage(array("danger" => "Senha inválida!"));
-					$this->_helper->redirector("index");
+					$this->_helper->redirector("index");				
 					
-					return;
 				}
 			}else{
 				//login ou senha incorretos
 				$this->_helper->flashMessenger->addMessage(array("danger" => "Login ou senha inválidos"));
 				$this->_helper->redirector("index");
 				
-				return;
 			}
 		}else{
 			//erro ao logar
 			$this->_helper->flashMessenger->addMessage(array("danger" => "Erro ao logar!"));
 			$this->_helper->redirector("index");
-			
-			return;
-			
+				
 		}
+		
+		
 		
 	}
 	
 	public function logoutAction(){
 		
+		Zend_Session::stop();
+		Zend_Session::destroy();
+		$this->_helper->redirector('index', 'index');
+	
 	}
 }
 

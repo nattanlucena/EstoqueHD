@@ -1,0 +1,73 @@
+	<div id="form" style="padding-left: 25%; width:700px;">
+					<form method="POST" action="" class="form-horizontal">
+						<fieldset>
+							<div class="control-group">
+							
+								<div class="form-group">	
+									<label for="dc" class="col-sm-4 control-label">Tipo:</label>
+										<select id="dc" class="form-control col-sm-8" name="dc" style="width: 200px;">
+											<option value="processador">Processador</option>
+											<option value="hd">HD</option>
+											<option value="memoria">Memória</option>
+											<option value="gabinete">Gabinete</option>
+											<option value="placamae">Placa Mãe</option>
+											<option value="outros">Outros</option>
+										</select>
+								</div>
+								
+								<div class="form-group">	
+									<label for="dc" class="col-sm-4 control-label">Fornecedor:</label>
+										<select id="fornecedor" class="form-control col-sm-8" name="dc" style="width: 200px;" onchange="mostrarInput(this.value">
+											<option value="processador">Samsung</option>
+											<option value="hd">Intel</option>
+											<option value="memoria">Gigabyte</option>
+											<option value="gabinete">HP</option>
+											<option value="gabinete">Outro</option>
+										</select>
+										<input type="text" id="_outro" name="fornecedor" style="display: none">
+								</div>
+								
+								<div class="form-group">		
+									<label for="hostname" class="col-sm-4 control-label" >Modelo:</label>
+										<input type="text" class="form-control col-sm-8"  name="hostname" id="hostname" style="width: 200px;"/>
+								</div>
+								<div class="form-group">		
+									<label for="ip" class="col-sm-4 control-label" >Quantidade:</label>
+										<input type="text" class="form-control col-sm-8"  name="ip" id="ip" style="width: 60px;" required/>
+								</div>		
+								<div class="form-group">
+									<label for="dns1" class="col-sm-4 control-label" >Custo Total:</label>
+										<input type="text" class="form-control col-sm-8"  name="dns1"  id="dn1" style="width: 100px;"/>
+								</div>
+								<div class="form-group">		
+									<label for="dns2" class="col-sm-4 control-label" >Custo Projetado:</label>
+										<input type="text" class="form-control col-sm-8"  name="dns2"  id="dns2" style="width: 100px;"/>
+								</div>
+								<div class="form-group">		
+									<label for="dns2" class="col-sm-4 control-label">Observações:</label>
+										<textarea class="form-control col-sm-8"  name="dns2"  id="dns2" style="width: 250px;"></textarea>
+								</div>
+								
+								<div class="form-group pull-right">
+									<div class="col-sm-offset-2 col-sm-10">	
+										<input type="submit" class="btn btn-danger" id="save" value="Adicionar" name="save" style="width: 100px;"/>
+									</div>
+								</div>
+								<!-- .form-group -->
+							</div>
+							<!-- .control-group -->
+						</fieldset>
+					</form>
+				</div><!-- #form -->
+				
+				<script type="text/javascript">
+					function mostrarInput( id ){
+						var id = document.getElementByID("fornecedor");
+						
+						if( id.value == "outro"){
+							_outro.style.display = 'block';
+						}else{
+							_outro.style.display = 'none';
+						};
+					};
+				</script>

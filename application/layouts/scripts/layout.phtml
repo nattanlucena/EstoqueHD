@@ -1,3 +1,11 @@
+<?php 
+	$session_login = new Zend_Session_Namespace("session_login");
+	$flag = null;
+	if ($session_login->flag == true){		
+		$flag = true;
+	}
+?>
+
 <?php echo $this->doctype();?>
 <html lang="pt-br">
 	<head>
@@ -10,19 +18,26 @@
 	<div id="topo">
 			<div class="navbar navbar-default navbar-fixed-top">
 				<div class="container">
-					<div class="navbar-header">						
-						<img src="<?php echo $this->publicUrl;?>/img/logo.png" border="0" width="200px;" height="50px;">						
+					<div class="navbar-header">
+						<a href="<?php echo $this->baseUrl()?>/index">						
+							<img src="<?php echo $this->publicUrl;?>/img/logo.png" border="0" width="200px;" height="50px;">	
+						</a>					
 					</div><!-- .navbar-header -->
 					<div class="collapse navbar-collapse pull-right">
 						<ul class="nav navbar-nav">
-							<li><a href="index.php">Produtos</a></li>
-							<li><a href="reseller.php">Entrada</a></li>
-							<li  class="active"><a href="#">Saída</a></li>
+							<li><a href="<?php echo $this->baseUrl()?>/index">Produtos</a></li>
+							<li><a href="<?php echo $this->baseUrl()?>/entrada">Entrada</a></li>
+							<li><a href="<?php echo $this->baseUrl()?>/saida">Saída</a></li>
+							<?php if($flag == true):?>
+							<li><a href="<?php echo $this->url(array('controller'=>'login','action'=>'logout')); ?>">Logout</a></li>
+							<?php else:?>
 							<li><a href="<?php echo $this->baseUrl()?>/login">Login</a></li>
+							<?php endif;?>
 						</ul>
 					</div><!-- .navbar-collapse -->
 				</div><!-- .container -->
 			</div><!-- .navbar -->
+			
 		</div>
 		<!-- #topo -->
 	<div id="all">

@@ -1,12 +1,18 @@
-<div style="width: 300px;">
-	<form action="<?=$this->baseUrl ?>/login/logar" class="form-signin" role="form" method="post">
+<div style="width: 300px; margin-left: 10px;">
+	<form  action="<?=$this->baseUrl ?>/login/logar" class="form-signin" role="form" method="post">
 		
 		<h3 class="form-signin-heading">Login:</h3>
 		
 		<input type="text" class="form-control" placeholder="login" required autofocus name="login"><br>
 		<input type="password" class="form-control" placeholder="senha" required name="senha"><br>
 		
-		<button class="btn btn-lg btn-primary btn-block" type="submit" name="logar">Logar</button>
-			
+		<button class="btn btn-primary" type="submit" name="logar" style="width: 100px;">Logar</button>
+		<?php 
+			if( $this->messages != null){
+				foreach($this->messages as $message){
+				    echo $message['danger'] . "<br/>";
+				}
+			}
+		?>
 	</form>
 </div>

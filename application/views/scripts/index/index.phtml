@@ -1,1 +1,45 @@
-<p>Teste</p>
+<?php include './include/session_verify.phtml'?>
+
+	<?php if($flag == true):?>
+	<div id="novo_produto">
+		<span class="pull-right" style="margin-bottom: 15px;">
+			<a href="<?php echo $this->baseUrl()?>/produtos">
+				<button class="btn btn-danger" >
+					<strong>Adicionar Item</strong>
+						</button>
+			</a>
+			</span>
+	</div>
+			<?php endif;?>
+<div id="_table">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Item</th>
+				<th>Tipo</th>
+				<th>Estoque Atual</th>
+				<th>Custo Total</th>
+				<th>Custo Projetado</th>
+				<th>Observações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Produto teste: Intel Xeon</td>
+				<td>Processador</td>
+				<td>3</td>
+				<td>R$5,00</td>
+				<td>R$5,00</td>
+				<td>Teste Teste Teste Teste Teste Teste Teste Teste</td>
+			</tr>
+			<tr>
+				<td>Produto teste: Intel Xeon</td>
+				<td>Processador</td>
+				<td>3</td>
+				<td>R$5,00</td>
+				<td>R$5,00</td>
+				<td>Teste Teste Teste Teste Teste Teste Teste Teste</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
