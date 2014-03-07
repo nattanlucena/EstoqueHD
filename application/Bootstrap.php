@@ -1,8 +1,13 @@
 <?php
 
+define ( 'DS', DIRECTORY_SEPARATOR );
+define ( 'PS', PATH_SEPARATOR );
+define ( 'BASEPATH', getcwd () . DS );
+
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
-
+	
+	
 	protected function _initDoctype(){
 		
 			$this->bootstrap("view");
@@ -30,6 +35,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$frontController->throwExceptions(true);
 	}
 	
+	protected function _initAutoload()
+	{
+		$autoloader = Zend_Loader_Autoloader::getInstance();
+		
+		return $autoloader;
+	}
 	
 }
 

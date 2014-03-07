@@ -32,6 +32,7 @@ class LoginController extends Zend_Controller_Action
 					$session_login = new Zend_Session_Namespace("session_login");
 					$session_login->id = "8b4ae0b09fab9707c0ba158dce499c9c";
 					$session_login->flag = true;
+					
 					$this->_helper->flashMessenger->addMessage(array("success" => "Olá, seja bem vindo!"));
 					$this->_helper->redirector('index', 'index');
 					

@@ -1,8 +1,7 @@
 <?php include './include/session_verify.phtml'?>
-
-	<?php if($flag == true):?>
-	<div id="novo_produto">
-		<span class="pull-right" style="margin-bottom: 15px;">
+	<?php //if($flag == true):?>
+	<div id="novo_produto" style="margin-bottom: 45px;">
+		<span class="pull-right" >
 			<a href="<?php echo $this->baseUrl()?>/produtos">
 				<button class="btn btn-danger" >
 					<strong>Adicionar Item</strong>
@@ -10,36 +9,240 @@
 			</a>
 			</span>
 	</div>
-			<?php endif;?>
-<div id="_table">
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Item</th>
-				<th>Tipo</th>
-				<th>Estoque Atual</th>
-				<th>Custo Total</th>
-				<th>Custo Projetado</th>
-				<th>Observações</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Produto teste: Intel Xeon</td>
-				<td>Processador</td>
-				<td>3</td>
-				<td>R$5,00</td>
-				<td>R$5,00</td>
-				<td>Teste Teste Teste Teste Teste Teste Teste Teste</td>
-			</tr>
-			<tr>
-				<td>Produto teste: Intel Xeon</td>
-				<td>Processador</td>
-				<td>3</td>
-				<td>R$5,00</td>
-				<td>R$5,00</td>
-				<td>Teste Teste Teste Teste Teste Teste Teste Teste</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+<?php //endif;?>
+
+<div class="_tab">
+	<ul id="tab_1" class="nav nav-tabs nav-justified" style="margin-top: 20px;">
+		<li class="active">
+			<a href="#processador" data-toggle="tab">Processadores</a>
+		</li>
+		<li class>
+			<a href="#hd" data-toggle="tab">HDs</a>
+		</li>
+		<li class>
+			<a href="#memoria" data-toggle="tab">Memórias</a>
+		</li>
+		<li class>
+			<a href="#placamae" data-toggle="tab">Placas mãe</a>
+		</li>
+		<li class>
+			<a href="#gabinete" data-toggle="tab">Gabinetes</a>
+		</li>
+		<li class>
+			<a href="#outros" data-toggle="tab">Outros</a>
+		</li>
+	</ul>	
+	<div id="tab_content" class="tab-content" style="margin-top: 20px;">
+		
+		<div class="tab-pane fade in active" id="processador">
+			<div id="tab_table_proc">
+				<div id="_table">
+					<table class="table table-condensed">
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Fabricante</th>
+								<th>Estoque Atual</th>
+								<th>Custo Total</th>
+								<th>Custo Projetado</th>
+								<th>Observações</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php if(!empty($this->produtos)): ?>
+							<?php foreach ($this->produtos as $p):?>
+							<?php if($p->tipo == "Processador"):?>
+							<tr>
+								<td><?php echo $p->modelo;?></td>
+								<td><?php echo $p->fabricante;?></td>
+								<td><?php echo $p->quantidade;?></td>
+								<td><?php echo $p->custoTotal;?></td>
+								<td><?php echo $p->custoProjetado;?></td>
+								<td><?php echo $p->observacao;?></td>
+							</tr>
+							<?php endif;?>
+							<?php endforeach;?>
+							<?php endif;?>
+						</tbody>
+					</table>
+				</div><!-- #_table -->
+			</div><!-- #tab_table_proc -->	
+		</div><!-- #processador -->
+		
+		<div class="tab-pane fade" id="hd">
+			<div id="tab_table_hd">
+				<div id="_table">
+					<table class="table table-condensed">
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Fabricante</th>
+								<th>Estoque Atual</th>
+								<th>Custo Total</th>
+								<th>Custo Projetado</th>
+								<th>Observações</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php if(!empty($this->produtos)): ?>
+							<?php foreach ($this->produtos as $p):?>
+							<?php if($p->tipo == "HD"):?>
+							<tr>
+								<td><?php echo $p->modelo;?></td>
+								<td><?php echo $p->fabricante;?></td>
+								<td><?php echo $p->quantidade;?></td>
+								<td><?php echo $p->custoTotal;?></td>
+								<td><?php echo $p->custoProjetado;?></td>
+								<td><?php echo $p->observacao;?></td>
+							</tr>
+							<?php endif;?>
+							<?php endforeach;?>
+							<?php endif;?>
+						</tbody>
+					</table>
+				</div><!-- #_table -->
+			</div><!-- #tab_table_hd-->	
+		</div><!-- #hd -->
+		
+		<div class="tab-pane fade" id="memoria">
+			<div id="tab_table_memoria">
+				<div id="_table">
+					<table class="table table-condensed">
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Fabricante</th>
+								<th>Estoque Atual</th>
+								<th>Custo Total</th>
+								<th>Custo Projetado</th>
+								<th>Observações</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php if(!empty($this->produtos)): ?>
+							<?php foreach ($this->produtos as $p):?>
+							<?php if($p->tipo == "Memória"):?>
+							<tr>
+								<td><?php echo $p->modelo;?></td>
+								<td><?php echo $p->fabricante;?></td>
+								<td><?php echo $p->quantidade;?></td>
+								<td><?php echo $p->custoTotal;?></td>
+								<td><?php echo $p->custoProjetado;?></td>
+								<td><?php echo $p->observacao;?></td>
+							</tr>
+							<?php endif;?>
+							<?php endforeach;?>
+							<?php endif;?>
+						</tbody>
+					</table>
+				</div><!-- #_table -->
+			</div><!-- #tab_table_memoria-->	
+		</div><!-- #memoria -->
+		
+		<div class="tab-pane fade" id="placamae">
+			<div id="tab_table_pm">
+				<div id="_table">
+					<table class="table table-condensed">
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Fabricante</th>
+								<th>Estoque Atual</th>
+								<th>Custo Total</th>
+								<th>Custo Projetado</th>
+								<th>Observações</th>
+							</tr>
+						</thead>
+						<tbody>	
+							<?php if(!empty($this->produtos)): ?>
+							<?php foreach ($this->produtos as $p):?>
+							<?php if($p->tipo == "Placa Mãe"):?>
+							<tr>
+								<td><?php echo $p->modelo;?></td>
+								<td><?php echo $p->fabricante;?></td>
+								<td><?php echo $p->quantidade;?></td>
+								<td><?php echo $p->custoTotal;?></td>
+								<td><?php echo $p->custoProjetado;?></td>
+								<td><?php echo $p->observacao;?></td>
+							</tr>
+							<?php endif;?>
+							<?php endforeach;?>
+							<?php endif;?>						
+						</tbody>
+					</table>
+				</div><!-- #_table -->
+			</div><!-- #tab_table_pm-->	
+		</div><!-- #placamae -->
+		
+		<div class="tab-pane fade" id="gabinete">
+			<div id="tab_table_gabinete">
+				<div id="_table">
+					<table class="table table-condensed">
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Fabricante</th>
+								<th>Estoque Atual</th>
+								<th>Custo Total</th>
+								<th>Custo Projetado</th>
+								<th>Observações</th>
+							</tr>
+						</thead>
+						<tbody>	
+							<?php if(!empty($this->produtos)): ?>
+							<?php foreach ($this->produtos as $p):?>
+							<?php if($p->tipo == "Gabinete"):?>
+							<tr>
+								<td><?php echo $p->modelo;?></td>
+								<td><?php echo $p->fabricante;?></td>
+								<td><?php echo $p->quantidade;?></td>
+								<td><?php echo $p->custoTotal;?></td>
+								<td><?php echo $p->custoProjetado;?></td>
+								<td><?php echo $p->observacao;?></td>
+							</tr>
+							<?php endif;?>
+							<?php endforeach;?>
+							<?php endif;?>						
+						</tbody>
+					</table>
+				</div><!-- #_table -->
+			</div><!-- #tab_table_gabinete-->	
+		</div><!-- #gabinete -->
+		
+		<div class="tab-pane fade" id="outros">
+			<div id="tab_table_outros">
+				<div id="_table">
+					<table class="table table-condensed">
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Fabricante</th>
+								<th>Estoque Atual</th>
+								<th>Custo Total</th>
+								<th>Custo Projetado</th>
+								<th>Observações</th>
+							</tr>
+						</thead>
+						<tbody>	
+							<?php if(!empty($this->produtos)): ?>
+							<?php foreach ($this->produtos as $p):?>
+							<?php if($p->tipo == "Outros"):?>
+							<tr>
+								<td><?php echo $p->modelo;?></td>
+								<td><?php echo $p->fabricante;?></td>
+								<td><?php echo $p->quantidade;?></td>
+								<td><?php echo $p->custoTotal;?></td>
+								<td><?php echo $p->custoProjetado;?></td>
+								<td><?php echo $p->observacao;?></td>
+							</tr>
+							<?php endif;?>
+							<?php endforeach;?>
+							<?php endif;?>						
+						</tbody>
+					</table>
+				</div><!-- #_table -->
+			</div><!-- #tab_table_outros-->	
+		</div><!-- #outros -->
+		
+	</div><!-- #tab_content -->
+</div><!-- ._tab -->
