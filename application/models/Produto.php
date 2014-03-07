@@ -83,7 +83,7 @@ class Application_Model_Produto extends Zend_Db_Table_Abstract
 		$sql = "Select DISTINCT p.*, f.fabricante as 'fabricante', m.modelo as 'modelo', t.tipo as 'tipo' FROM
 				produto p 
 				INNER JOIN fabricante f 
-				INNER JOIN modelo m ON f.id = m.id
+				INNER JOIN modelo m ON f.id = m.idFabricante 
 				INNER JOIN tipo t ON t.id = m.idTipo AND p.idModelo = m.id";
 				
 		

@@ -94,15 +94,15 @@ class ProdutosController extends Zend_Controller_Action
 		if($this->_request->isGet()){
 			
 			$idTipo = $this->_request->getParam('idTipo');
-			var_dump($idTipo);
-			$modelos = $this->_modelo->findByIdtipo($idTipo);
-			var_dump($modelos);
-			$select = "";
 			
+			$modelos = $this->_modelo->findByIdtipo($idTipo);
+			
+			$select = "";			
 			foreach($modelos as $m){
 				$select .= "<option value=".$m['id'].">".$m['modelo']."</option>";
 			}
 			$select .= "<option value='outro'>Outro</option>";
+			
 			$this->_helper->layout()->disableLayout();
 			$this->_helper->viewRenderer->setNoRender(true);
 			
